@@ -1,0 +1,351 @@
+╔════════════════════════════════════════════════════════════════════════════╗
+║                                                                            ║
+║         ARTISAN'S CORNER - QUICK REFERENCE CARD                           ║
+║         Production-Ready Multi-Vendor E-Commerce Marketplace              ║
+║                                                                            ║
+╚════════════════════════════════════════════════════════════════════════════╝
+
+
+📚 AVAILABLE GUIDES (Choose One)
+════════════════════════════════════════════════════════════════════════════
+
+1. 00_START_HERE.md                    👈 START HERE
+   └─ Overview, guide selector, quick FAQ
+   └─ Time: 2 minutes
+
+2. QUICK_START.md
+   └─ Copy-paste commands only
+   └─ Time: 5 minutes
+
+3. RUN_PROJECT_STEPS.md                ⭐ MOST DETAILED
+   └─ Complete step-by-step walkthrough
+   └─ Expected output, verification
+   └─ Time: 15 minutes
+
+4. SETUP_CHECKLIST.md
+   └─ Checkbox-style progress tracker
+   └─ Organized by phases
+   └─ Time: 10 minutes
+
+5. SETUP_GUIDE.md                      📖 MOST COMPREHENSIVE
+   └─ Deep dive with everything
+   └─ Architecture, features, troubleshooting
+   └─ Time: 30 minutes
+
+6. GUIDES_INDEX.md
+   └─ Guide comparison and selection
+   └─ Scenarios and reading paths
+   └─ Time: 2 minutes
+
+7. SETUP_COMPLETE_SUMMARY.md
+   └─ What's been done, next steps
+   └─ File structure, commands reference
+   └─ Time: 5 minutes
+
+8. REFERENCE_CARD.txt                  📋 THIS FILE
+   └─ Quick reference cheat sheet
+
+
+⚡ QUICKEST PATH (2 MINUTES)
+════════════════════════════════════════════════════════════════════════════
+
+PowerShell:
+  cd C:\Users\chavd\.gemini\antigravity\scratch\artisan-corner
+  net start MongoDB
+  npm run dev
+
+Browser:
+  http://localhost:5173  ← Frontend
+  http://localhost:5000  ← Backend
+
+✅ Done! Marketplace is running.
+
+
+🎯 WHICH GUIDE SHOULD I READ?
+════════════════════════════════════════════════════════════════════════════
+
+Experienced developer, just need commands?
+  → QUICK_START.md
+
+First time setting up?
+  → RUN_PROJECT_STEPS.md (detailed walkthrough)
+
+Want to track progress with checkboxes?
+  → SETUP_CHECKLIST.md
+
+Want to understand everything?
+  → SETUP_GUIDE.md
+
+Not sure which guide?
+  → 00_START_HERE.md or GUIDES_INDEX.md
+
+
+🚀 COMMANDS CHEAT SHEET
+════════════════════════════════════════════════════════════════════════════
+
+Development:
+  npm run dev              Run both servers
+  npm run server:dev       Backend only  
+  npm run client:dev       Frontend only
+
+Database:
+  npm run seed             Add sample data (50+ products)
+  npm run create-admin     Create admin account
+  npm run clean-db         Clear all data
+
+Building:
+  npm run build            Build for production
+  npm test                 Run tests
+  npm run install-all      Reinstall dependencies
+
+Troubleshooting:
+  npm cache clean --force  Clear cache
+
+
+🌐 URLS & PORTS
+════════════════════════════════════════════════════════════════════════════
+
+Frontend (React):
+  http://localhost:5173
+  
+Backend API (Express):
+  http://localhost:5000
+  
+Health Check:
+  http://localhost:5000/
+  
+MongoDB:
+  mongodb://127.0.0.1:27017/artisan_corner
+
+
+📊 PROJECT INFO
+════════════════════════════════════════════════════════════════════════════
+
+Name:          Artisan's Corner
+Type:          E-commerce marketplace
+Tech Stack:    MERN (MongoDB, Express, React, Node)
+Frontend:      React + Vite + Tailwind CSS
+Backend:       Express.js + Node.js
+Database:      MongoDB
+Auth:          JWT tokens
+Payments:      Stripe
+File Upload:   Cloudinary
+
+
+✅ PREREQUISITES
+════════════════════════════════════════════════════════════════════════════
+
+Required:
+  Node.js v16+    → https://nodejs.org/
+  npm v8+         → (comes with Node.js)
+  MongoDB v5.0+   → https://www.mongodb.com/try/download/community
+
+Verify:
+  node --version
+  npm --version
+  mongod --version
+
+
+📋 DAILY STARTUP (5 STEPS)
+════════════════════════════════════════════════════════════════════════════
+
+1. Open PowerShell
+
+2. Navigate to project:
+   cd C:\Users\chavd\.gemini\antigravity\scratch\artisan-corner
+
+3. Start MongoDB:
+   net start MongoDB
+
+4. Start servers:
+   npm run dev
+
+5. Open browser:
+   http://localhost:5173
+
+⏱ Wait 30-60 seconds for servers to start
+
+
+🛑 STOP SERVERS
+════════════════════════════════════════════════════════════════════════════
+
+Press: Ctrl+C (in terminal with "npm run dev")
+
+Expected prompt:
+  Terminate batch job (Y/N)? y
+
+
+⚠️ COMMON ISSUES
+════════════════════════════════════════════════════════════════════════════
+
+MongoDB won't start?
+  → net start MongoDB
+  → Or: mongod --dbpath [path]
+  → Check: Services app (services.msc)
+
+Port 5000 in use?
+  → Edit server/.env: PORT=5001
+  → Or: Get-Process -Name node | Stop-Process
+
+Can't find modules?
+  → npm run install-all
+
+CORS error?
+  → Check CLIENT_URL in server/.env
+  → Should be: http://localhost:5173
+
+Page shows "Cannot find /"?
+  → Already fixed! Root route now returns health check
+
+For detailed troubleshooting:
+  → See SETUP_GUIDE.md or SETUP_CHECKLIST.md
+
+
+📁 FOLDER STRUCTURE
+════════════════════════════════════════════════════════════════════════════
+
+artisan-corner/
+├── 📄 [GUIDES & DOCS]
+│   ├── 00_START_HERE.md
+│   ├── QUICK_START.md
+│   ├── RUN_PROJECT_STEPS.md
+│   ├── SETUP_CHECKLIST.md
+│   ├── SETUP_GUIDE.md
+│   ├── GUIDES_INDEX.md
+│   ├── SETUP_COMPLETE_SUMMARY.md
+│   ├── REFERENCE_CARD.txt (this file)
+│   └── README.md
+│
+├── server/                Backend (Express)
+│   ├── src/
+│   │   ├── server.js      Entry point
+│   │   ├── app.js         Express setup
+│   │   ├── routes/        API routes
+│   │   ├── models/        Database schemas
+│   │   └── controllers/   Route handlers
+│   └── .env               Configuration
+│
+├── client/                Frontend (React)
+│   ├── src/
+│   │   ├── App.jsx        Main component
+│   │   ├── pages/         Page components
+│   │   └── components/    Reusable components
+│   └── vite.config.js     Build config
+│
+└── node_modules/          Dependencies
+
+
+🎯 SUCCESS CHECKLIST
+════════════════════════════════════════════════════════════════════════════
+
+Before you celebrate:
+
+☑ MongoDB is running
+☑ Backend shows: "Artisan's Corner API Server Running"
+☑ Frontend shows: "VITE v6.x.x ready"
+☑ Browser loads: http://localhost:5173
+☑ Can navigate the website
+☑ No critical errors in browser console (F12)
+
+
+💡 TIPS & TRICKS
+════════════════════════════════════════════════════════════════════════════
+
+Keep two terminals:
+  Terminal 1: npm run dev (keep running)
+  Terminal 2: Run other commands
+
+Browser DevTools (F12):
+  Console: See JavaScript errors
+  Network: Monitor API calls
+  Hard refresh: Ctrl+Shift+R
+
+Code updates auto-reload:
+  Frontend: Instant with Vite
+  Backend: Automatic with nodemon
+
+Keep MongoDB running:
+  Background service or separate terminal
+  Or use MongoDB Atlas (cloud)
+
+
+📞 QUICK LINKS
+════════════════════════════════════════════════════════════════════════════
+
+Quick answers:       → 00_START_HERE.md (FAQ section)
+Fast commands:       → QUICK_START.md
+Full walkthrough:    → RUN_PROJECT_STEPS.md
+Progress tracking:   → SETUP_CHECKLIST.md
+Everything:          → SETUP_GUIDE.md
+Troubleshooting:     → SETUP_GUIDE.md (Troubleshooting section)
+
+
+❓ FREQUENTLY ASKED QUESTIONS
+════════════════════════════════════════════════════════════════════════════
+
+Q: How do I run it?
+A: npm run dev (after: cd [project], net start MongoDB)
+
+Q: Where do I make changes?
+A: server/src/ (backend) or client/src/ (frontend)
+
+Q: Will changes auto-reload?
+A: Yes - Frontend instantly, Backend automatically
+
+Q: How do I stop it?
+A: Ctrl+C in terminal
+
+Q: How do I run frontend and backend separately?
+A: npm run server:dev (Terminal 1) and npm run client:dev (Terminal 2)
+
+Q: What if something breaks?
+A: Check SETUP_GUIDE.md Troubleshooting section
+
+Q: Can I use cloud MongoDB?
+A: Yes, update MONGO_URI in server/.env
+
+Q: How do I add sample products?
+A: npm run seed
+
+Q: How do I create an admin account?
+A: npm run create-admin
+
+
+🎓 LEARNING PATH
+════════════════════════════════════════════════════════════════════════════
+
+If new to MERN:
+  1. Read: RUN_PROJECT_STEPS.md (15 min)
+  2. Run: npm run dev
+  3. Explore: server/src/ and client/src/ code
+  4. Modify: Make small changes
+  5. Build: Add your own features
+
+If experienced with MERN:
+  1. Use: QUICK_START.md
+  2. Start coding
+  3. Test in browser
+  4. Deploy when ready
+
+
+🎉 YOU'RE READY!
+════════════════════════════════════════════════════════════════════════════
+
+Everything is set up. Just:
+
+1. Pick a guide (recommend: 00_START_HERE.md)
+2. Follow the instructions
+3. Run: npm run dev
+4. Open: http://localhost:5173
+5. Start building! 🚀
+
+
+════════════════════════════════════════════════════════════════════════════
+
+Last Updated: August 15, 2026
+Status: ✅ Complete and Ready
+Next Action: Read a guide and run "npm run dev"
+
+Happy Selling! 🎨🛍️
+
+════════════════════════════════════════════════════════════════════════════
