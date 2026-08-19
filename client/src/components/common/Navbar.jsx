@@ -76,10 +76,13 @@ export const Navbar = () => {
   return (
     <header className="sticky top-0 z-50 artisan-glass border-b border-stone-200/80 transition-all duration-300">
       {/* Top Announcement Bar */}
+
+{/*        
       <div className="bg-charcoal-900 text-stone-300 text-xs py-2 px-4 text-center tracking-wide font-medium flex items-center justify-center gap-2">
         <Sparkles className="w-3.5 h-3.5 text-amberGold-400 shrink-0" />
         <span>Direct from Master Artisans • 95% Payout Guaranteed to Independent Makers</span>
       </div>
+       */}
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20 gap-4 sm:gap-6">

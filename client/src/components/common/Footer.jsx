@@ -16,7 +16,7 @@ export const Footer = () => {
               </div>
               <div>
                 <h4 className="text-sm font-semibold text-white">Direct Artisan Payout</h4>
-                <p className="text-xs text-stone-400">95% of proceeds go directly to the maker</p>
+                <p className="text-xs text-stone-400">98% of proceeds go directly to the maker</p>
               </div>
             </div>
 

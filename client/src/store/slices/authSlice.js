@@ -15,7 +15,8 @@ export const loginUser = createAsyncThunk('auth/loginUser', async (credentials, 
     const res = await axiosClient.post('/auth/login', credentials);
     return res.data;
   } catch (err) {
-    return rejectWithValue(err.message || 'Login failed');
+    const errorMessage = err?.errors?.map(e => e.message).join('. ') || err?.message || 'Login failed';
+    return rejectWithValue(errorMessage);
   }
 });
 
@@ -24,7 +25,8 @@ export const registerUser = createAsyncThunk('auth/registerUser', async (userDat
     const res = await axiosClient.post('/auth/register', userData);
     return res.data;
   } catch (err) {
-    return rejectWithValue(err.message || 'Registration failed');
+    const errorMessage = err?.errors?.map(e => e.message).join('. ') || err?.message || 'Registration failed';
+    return rejectWithValue(errorMessage);
   }
 });
 

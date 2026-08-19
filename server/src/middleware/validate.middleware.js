@@ -21,7 +21,8 @@ const validate = (schema) => (req, res, next) => {
         field: err.path.join('.').replace(/^(body|query|params)\./, ''),
         message: err.message
       }));
-      return next(new ApiError(400, 'Validation failed', formattedErrors));
+      const detailedMessage = formattedErrors.map(e => e.message).join('. ') || 'Validation failed';
+      return next(new ApiError(400, detailedMessage, formattedErrors));
     }
     next(error);
   }

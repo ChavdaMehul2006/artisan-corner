@@ -166,7 +166,7 @@ describe("Artisan's Corner API Test Suite", () => {
         .post('/api/auth/login')
         .send({
           email: 'admin@artisanscorner.com',
-          password: 'ArtisanPass123!'
+          password: 'Mehul$#@123'
         });
 
       adminTokenCookie = adminLogin.headers['set-cookie'];

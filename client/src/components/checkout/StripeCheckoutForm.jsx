@@ -93,8 +93,18 @@ export const StripeCheckoutForm = ({ items = [], subtotal = 0 }) => {
       });
     } catch (err) {
       console.error('Order creation error:', err);
-      setErrorMsg(err.message || 'Payment processing failed. Please try again.');
-      addToast(err.message || 'Payment processing failed', 'error');
+      const errMsg = err?.message || err?.errors?.[0]?.message || 'Payment processing failed. Please try again.';
+      
+      // Auto-heal cart if it contains an outdated product ID from prior seed
+      const match = errMsg.match(/Product not found for ID:\s*([a-f0-9]+)/i);
+      if (match && match[1]) {
+        dispatch(removeItem(match[1]));
+        setErrorMsg('An out-of-date item was removed from your cart. Please click Complete Payment again to proceed.');
+        addToast('Removed outdated item from basket. Please retry checkout.', 'info');
+      } else {
+        setErrorMsg(errMsg);
+        addToast(errMsg, 'error');
+      }
     } finally {
       setIsProcessing(false);
     }
@@ -103,9 +113,22 @@ export const StripeCheckoutForm = ({ items = [], subtotal = 0 }) => {
   return (
     <form onSubmit={handlePlaceOrder} className="space-y-8">
       {errorMsg && (
-        <div className="p-4 bg-rose-50 border border-rose-200 text-rose-800 rounded-3xl flex items-center gap-3 text-sm">
-          <AlertCircle className="w-5 h-5 shrink-0 text-rose-600" />
-          <span>{errorMsg}</span>
+        <div className="p-4 bg-rose-50 border border-rose-200 text-rose-800 rounded-3xl flex items-center justify-between gap-3 text-sm">
+          <div className="flex items-center gap-3">
+            <AlertCircle className="w-5 h-5 shrink-0 text-rose-600" />
+            <span>{errorMsg}</span>
+          </div>
+          <button
+            type="button"
+            onClick={() => {
+              dispatch(clearCart());
+              if (isAuthenticated) dispatch(clearCartAsync());
+              navigate('/products');
+            }}
+            className="text-xs font-bold text-rose-700 underline shrink-0 hover:text-rose-900 cursor-pointer"
+          >
+            Clear Cart
+          </button>
         </div>
       )}
 
