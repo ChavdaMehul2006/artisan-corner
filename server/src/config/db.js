@@ -1,3 +1,8 @@
+const dns = require('dns');
+
+// Fix MongoDB SRV DNS resolution
+dns.setServers(['8.8.8.8', '8.8.4.4']);
+
 const mongoose = require('mongoose');
 
 const connectDB = async () => {

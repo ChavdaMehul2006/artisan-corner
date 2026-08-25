@@ -1,7 +1,9 @@
 import axios from 'axios';
 
+const API_URL = import.meta.env.VITE_API_URL || '/api';
+
 const axiosClient = axios.create({
-  baseURL: '/api',
+  baseURL: API_URL,
   withCredentials: true,
   headers: {
     'Content-Type': 'application/json',
@@ -47,7 +49,7 @@ axiosClient.interceptors.response.use(
       isRefreshing = true;
 
       try {
-        await axios.post('/api/auth/refresh-token', {}, { withCredentials: true });
+        await axiosClient.post('/auth/refresh-token', {});
         isRefreshing = false;
         processQueue(null);
         return axiosClient(originalRequest);
@@ -58,7 +60,11 @@ axiosClient.interceptors.response.use(
       }
     }
 
-    return Promise.reject(error.response?.data || { message: error.message || 'An unexpected error occurred' });
+    return Promise.reject(
+      error.response?.data || {
+        message: error.message || 'An unexpected error occurred',
+      }
+    );
   }
 );
 

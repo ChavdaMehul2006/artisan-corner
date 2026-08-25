@@ -1,3 +1,6 @@
+const dns = require("dns");
+dns.setServers(["8.8.8.8", "8.8.4.4"]);
+
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const User = require("../models/User");
@@ -8,6 +11,7 @@ const createAdmin = async () => {
   try {
     const mongoURI =
       process.env.MONGO_URI || "mongodb://127.0.0.1:27017/artisan_corner";
+
     await mongoose.connect(mongoURI);
 
     const args = process.argv.slice(2);
@@ -25,9 +29,14 @@ const createAdmin = async () => {
       user.role = "ADMIN";
       user.name = name;
       user.password = password; // pre-save hook will hash it
-      user.avatar = { url: avatarUrl, publicId: null };
+      user.avatar = {
+        url: avatarUrl,
+        publicId: null,
+      };
       user.isActive = true;
+
       await user.save();
+
       console.log(
         `[Admin Creator] Existing user ${email} upgraded to ADMIN successfully!`,
       );
@@ -43,6 +52,7 @@ const createAdmin = async () => {
           publicId: null,
         },
       });
+
       console.log(`[Admin Creator] New ADMIN user created successfully:
       - Name: ${user.name}
       - Email: ${user.email}
