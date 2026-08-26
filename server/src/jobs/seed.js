@@ -41,13 +41,13 @@ const seedDatabase = async () => {
     });
     console.log("[Seed] Created marketplace settings (5% commission)");
 
-    const DEFAULT_PASSWORD = "ArtisanPass123!";
+    const DEFAULT_PASSWORD = "Mehul$#@123";
 
     // 2. Create Users
     const adminUser = await User.create({
       name: "Mehul (Admin)",
       email: "admin@artisanscorner.com",
-      password: "Mehul$#@123",
+      password: DEFAULT_PASSWORD,
       role: "ADMIN",
       phone: "+1 (555) 019-4572",
       isActive: true,
